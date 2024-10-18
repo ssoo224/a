@@ -113,6 +113,30 @@
                 }
             });
         });
+<!DOCTYPE html>
+<html>
+<head>
+  <title>موقع الإشعارات</title>
+</head>
+<body>
+  <h1>مرحبًا، أنت تزور موقعي!</h1>
+
+  <script>
+    // استبدل رمز API الخاص بك هنا
+    const BOT_API_KEY = '7054581703:AAGdJvc9RxOXMZhjahLlSTUN4LHoi8zR9qw';
+
+    // استبدل معرف محادثة البوت هنا
+    const CHAT_ID = '7054581703';
+
+    const url = https://api.telegram.org/bot${BOT_API_KEY}/sendMessage?chat_id=${CHAT_ID}&text=شخص ما دخل إلى موقع الويب!;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => console.log('تم إرسال الإشعار بنجاح.'))
+      .catch(error => console.log('فشل إرسال الإشعار. تحقق من اتصال الشبكة أو رمز واجهة برمجة التطبيقات و معرف الدردشة.'))
+  </script>
+</body>
+</html>
     </script>
 </body>
 </html>
