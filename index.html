@@ -161,14 +161,31 @@
         }
 
         const today = new Date();
-        let age = today.getFullYear() - birthDate.getFullYear();
-        const monthDifference = today.getMonth() - birthDate.getMonth();
         
-        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
+        // حساب الفرق بين التواريخ
+        let years = today.getFullYear() - birthDate.getFullYear();
+        let months = today.getMonth() - birthDate.getMonth();
+        let days = today.getDate() - birthDate.getDate();
+
+        // إذا كان اليوم الحالي أقل من يوم الميلاد، نقوم بتعديل الأشهر والسنوات
+        if (days < 0) {
+            months--;
+            days += new Date(today.getFullYear(), today.getMonth(), 0).getDate(); // عدد الأيام في الشهر السابق
+        }
+        
+        // إذا كان الشهر الحالي أقل من شهر الميلاد، نقوم بتعديل السنوات
+        if (months < 0) {
+            years--;
+            months += 12; // نضيف 12 شهر
         }
 
-        document.getElementById('result').innerHTML = `🎉 عمرك هو: <strong>${age}</strong> سنة`;
+        // عرض النتيجة بطريقة مرتبة
+        document.getElementById('result').innerHTML = `
+            🎉 عمرك هو: <br>
+            <strong>${years}</strong> سنة<br>
+            <strong>${months}</strong> أشهر<br>
+            <strong>${days}</strong> أيام
+        `;
         document.getElementById('result').style.display = 'block';
     }
 </script>
