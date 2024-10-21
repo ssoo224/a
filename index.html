@@ -9,13 +9,13 @@
     <style>
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b); /* تدرج لوني من ألوان براقة */
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
             text-align: center;
             padding: 50px;
-            color: white; /* لون النص أبيض لتباين أفضل */
+            color: white;
         }
         .container {
-            background-color: rgba(255, 255, 255, 0.8); /* خلفية بيضاء مع شفافية */
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -61,15 +61,17 @@
         }
         .result {
             margin-top: 20px;
-            padding: 10px;
+            padding: 15px;
             background-color: #e0f7fa;
             border-radius: 5px;
             font-family: monospace;
             display: none;
+            color: #333;
+            font-size: 18px; /* حجم خط أكبر */
         }
         .telegram-container {
             margin-top: 30px;
-            background-color: #0088cc; /* لون خلفية لتليجرام */
+            background-color: #0088cc;
             padding: 10px;
             border-radius: 5px;
         }
@@ -145,13 +147,31 @@
         const month = parseInt(document.getElementById('month').value);
         const year = parseInt(document.getElementById('year').value);
 
+        // التحقق من صحة الإدخال
         if (!day || !month || !year) {
             alert('يرجى اختيار اليوم والشهر والسنة.');
             return;
         }
 
+        // التحقق من وجود تاريخ صالح
         const birthDate = new Date(year, month - 1, day);
-        const today = new Date();
+        if (birthDate.getFullYear() !== year || birthDate.getMonth() !== month - 1 || birthDate.getDate() !== day) {
+            alert('تاريخ غير صالح. يرجى التحقق من إدخالاتك.');
+            return;
+        }
 
+        const today = new Date();
         let age = today.getFullYear() - birthDate.getFullYear();
         const monthDifference = today.getMonth() - birthDate.getMonth();
+        
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+
+        document.getElementById('result').innerHTML = `🎉 عمرك هو: <strong>${age}</strong> سنة`;
+        document.getElementById('result').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
