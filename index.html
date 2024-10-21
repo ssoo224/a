@@ -3,21 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إنشاء قاعدة بيانات</title>
-    <link rel="stylesheet" href="style.css">
+    <title>حاسب العمر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b); /* تدرج لوني من ألوان براقة */
+            text-align: center;
+            padding: 50px;
+            color: white; /* لون النص أبيض لتباين أفضل */
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* خلفية بيضاء مع شفافية */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            margin: auto;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+            color: #333;
+        }
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            transition: border 0.3s;
+            margin-bottom: 15px;
+        }
+        select:focus {
+            border: 1px solid #4caf50;
+            outline: none;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #388e3c;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0f7fa;
+            border-radius: 5px;
+            font-family: monospace;
+            display: none;
+        }
+        .animated {
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>إنشاء قاعدة بيانات جديدة</h1>
-        <form id="databaseForm">
-            <input type="text" id="dbName" placeholder="اسم قاعدة البيانات" required>
-            <input type="text" id="username" placeholder="اسم المستخدم" required>
-            <input type="password" id="password" placeholder="كلمة المرور" required>
-            <input type="text" id="host" placeholder="العنوان (Host)" required>
-            <button type="submit">إنشاء</button>
-        </form>
-        <div id="response"></div>
-    </div>
-    <script src="script.js"></script>
+
+<div class="container">
+    <h1><i class="fas fa-birthday-cake animated"></i> حاسب العمر</h1>
+    
+    <label for="year">السنة:</label>
+    <select id="year">
+        <option value="">اختر السنة</option>
+        <script>
+            const currentYear = new Date().getFullYear();
+            for (let i = currentYear; i >= 1900; i--) {
+                document.write(`<option value="${i}">${i}</option>`);
+            }
+        </script>
+    </select>
+
+    <label for="month">الشهر:</label>
+    <select id="month">
+        <option value="">اختر الشهر</option>
+        <script>
+            for (let i = 1; i <= 12; i++) {
+                document.write(`<option value="${i}">${i}</option>`);
+            }
+        </script>
+    </select>
+
+    <label for="day">اليوم:</label>
+    <select id="day">
+        <option value="">اختر اليوم</option>
+        <script>
+            for (let i = 1; i <= 31; i++) {
+                document.write(`<option value="${i}">${i}</option>`);
+            }
+        </script>
+    </select>
+
+    <button onclick="calculateAge()">احسب العمر</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function calculateAge() {
+        const day = parseInt(document.getElementById('day').value);
+        const month = parseInt(document.getElementById('month').value);
+        const year = parseInt(document.getElementById('year').value);
+
+        if (!day || !month || !year) {
+            alert('يرجى اختيار اليوم والشهر والسنة.');
+            return;
+        }
+
+        const birthDate = new Date(year, month - 1, day);
+        const today = new Date();
+
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+        
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+
+        document.getElementById('result').innerHTML = `عمرك هو: ${age} سنة`;
+        document.getElementById('result').style.display = 'block';
+    }
+</script>
+
 </body>
 </html>
