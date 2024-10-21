@@ -3,31 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>موقع مشاهدة الأنمي</title>
+    <title>إنشاء قاعدة بيانات</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>مرحبًا بكم في موقع مشاهدة الأنمي</h1>
-    </header>
-
-    <main>
-        <h2>مقاطع الأنمي</h2>
-        <div class="anime-list" id="animeList">
-            <!-- مقاطع الأنمي ستضاف هنا -->
-        </div>
-        <h3>إضافة مقطع جديد</h3>
-        <input type="text" id="titleInput" placeholder="عنوان الأنمي" />
-        <input type="text" id="videoUrlInput" placeholder="رابط الفيديو" />
-        <input type="text" id="thumbnailUrlInput" placeholder="رابط الصورة المصغرة" />
-        <button id="addButton">أضف مقطع الأنمي</button>
-    </main>
-
-    <footer>
-        <p>جميع الحقوق محفوظة &copy; 2024</p>
-    </footer>
-
-    <script src="scripts.js"></script>
+    <div class="container">
+        <h1>إنشاء قاعدة بيانات جديدة</h1>
+        <form id="databaseForm">
+            <input type="text" id="dbName" placeholder="اسم قاعدة البيانات" required>
+            <input type="text" id="username" placeholder="اسم المستخدم" required>
+            <input type="password" id="password" placeholder="كلمة المرور" required>
+            <input type="text" id="host" placeholder="العنوان (Host)" required>
+            <button type="submit">إنشاء</button>
+        </form>
+        <div id="response"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
