@@ -67,6 +67,18 @@
             font-family: monospace;
             display: none;
         }
+        .telegram-container {
+            margin-top: 30px;
+            background-color: #0088cc; /* لون خلفية لتليجرام */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .telegram-button {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
         .animated {
             animation: bounce 1s infinite;
         }
@@ -121,6 +133,12 @@
     <div class="result" id="result"></div>
 </div>
 
+<div class="telegram-container">
+    <a href="https://t.me/Scorpion_scorp" class="telegram-button" target="_blank">
+        <i class="fab fa-telegram-plane"></i> انضم لقناتنا على تليجرام
+    </a>
+</div>
+
 <script>
     function calculateAge() {
         const day = parseInt(document.getElementById('day').value);
@@ -137,15 +155,3 @@
 
         let age = today.getFullYear() - birthDate.getFullYear();
         const monthDifference = today.getMonth() - birthDate.getMonth();
-        
-        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-
-        document.getElementById('result').innerHTML = `عمرك هو: ${age} سنة`;
-        document.getElementById('result').style.display = 'block';
-    }
-</script>
-
-</body>
-</html>
