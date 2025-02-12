@@ -43,8 +43,15 @@ app = Client(
   api_id=api_id, api_hash=api_hash,
   bot_token=token, in_memory=True
 )
-#bot = app
-#app = bot
+channel_username = "Scorpion_scorp"  # اسم المستخدم للقناة
+
+# دالة للتحقق من الانضمام للقناة
+async def is_subscribed(user_id):
+    try:
+        chat_member = await bot.get_chat_member(channel_username, user_id)
+        return chat_member.status in ["member", "administrator", "creator"]
+    except Exception:
+        return False
 
 STARTKEY = InlineKeyboardMarkup(
        [
