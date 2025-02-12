@@ -26,10 +26,7 @@ from pyromod import listen
 from pyrogram import (
     __version__ as v
 )
-
-#حقوق احمد @H1HHIH - @ELHYBA
-# تطوير مودي الهيبه اذا ما ذكرت مصدر بنحكح امك @ELHYBA - @SOURCE_ZE 
-ownerID = int("6581896306") #ايدي الادمن 
+ownerID = int("7115002714") #ايدي الادمن 
 api_hash = Config.API_HASH #ايبي هاش 
 api_id = Config.APP_ID #ايبي ايدي
 token = Config.TG_BOT_TOKEN #البوت
@@ -409,7 +406,7 @@ async def generator_and_about(app,m):
       text += "🐍 اللـغـة الـبـرمـجـيـة - بـايـثـون "
       text += f"\n🔥 اصـدار بايروجرام {v}"
       text += f"\n🌱 اصـدار تـيـلـيـثـون {v2}"
-      text += f"\n\n👤 مـطـور الـبـوت: @ELHYBA"
+      text += f"\n\n👤 مطورين البوت  علوش @{os.getenv('ALOSH_USERNAME', 'I_e_e_l')} محمد @{os.getenv('MOHAMMED_USERNAME', 'Zo_r0')}"
       await m.reply(text, quote=True)
 
     if m.text == "بـايـروجـرام":
@@ -423,25 +420,25 @@ async def generator_and_about(app,m):
         await c.connect()
         await rep.delete()
         phone_ask = await m.chat.ask(
-          "⎆ يـرجـى إرسـال رقـم هاتفـك مـع رمـز الدولة مثــال 📱: \n+963995×××××",
+          "✎┊ يـرجـى إرسـال رقـم هاتفـك مـع رمـز الدولة مثــال 📱: \n+963995×××××",
           reply_to_message_id=m.id, filters=filters.text
         )
         phone = phone_ask.text
         try:
           send_code = await c.send_code(phone)
         except PhoneNumberInvalid:
-          return await phone_ask.reply("⎆ رقـم الهـاتف الذي أرسلـته غير صالح أعـد استخـراج الجلسـة مـرة أخـرى .\n/start", quote=True)
+          return await phone_ask.reply("✎┊ رقـم الهـاتف الذي أرسلـته غير صالح أعـد استخـراج الجلسـة مـرة أخـرى .\n/start", quote=True)
         except Exception:
           return await phone_ask.reply("خطأ! ، يرجى المحاولة مرة أخرى لاحقًا 🤠\n/start",quote=True)
         hash = send_code.phone_code_hash
         code_ask = await m.chat.ask(
-          "⎆ أرسـل الكـود\n إذا جاءك في هـذه الطريقـة '12345' أرسـل بين كـل رقـم فـراغ\nمثـال : ' 1 2 3 4 5' .",filters=filters.text
+          "✎┊ أرسـل الكـود\n إذا جاءك في هـذه الطريقـة '12345' أرسـل بين كـل رقـم فـراغ\nمثـال : ' 1 2 3 4 5' .",filters=filters.text
         )
         code = code_ask.text
         try:
           await c.sign_in(phone, hash, code)
         except SessionPasswordNeeded:
-          password_ask = await m.chat.ask("⎆ يـرجـى إرسـال التحقق الخـاص بحسـابك ..", filters=filters.text)
+          password_ask = await m.chat.ask("✎┊ يـرجـى إرسـال التحقق الخـاص بحسـابك ..", filters=filters.text)
           password = password_ask.text
           try:
             await c.check_password(password)
@@ -480,22 +477,22 @@ async def generator_and_about(app,m):
         c = TelegramClient(StringSession(), api_id, api_hash)
         await c.connect()
         await rep.delete()
-        phone_ask = await m.chat.ask( "⎆ يـرجـى إرسـال رقـم هاتفـك مـع رمـز الدولة مثــال 📱: \n+963995××××× ",
+        phone_ask = await m.chat.ask( "✎┊ يـرجـى إرسـال رقـم هاتفـك مـع رمـز الدولة مثــال 📱: \n+963995××××× ",
           reply_to_message_id=m.id, filters=filters.text
         )
         phone = phone_ask.text
         try:
           send_code = await c.send_code_request(phone)
         except PhoneNumberInvalidError:
-          return await phone_ask.reply("⎆ رقـم الهـاتف الذي أرسلـته غير صالح أعـد استخـراج الجلسـة مـرة أخـرى .\n/start", quote=True)
+          return await phone_ask.reply("✎┊ رقـم الهـاتف الذي أرسلـته غير صالح أعـد استخـراج الجلسـة مـرة أخـرى .\n/start", quote=True)
         except Exception:
           return await phone_ask.reply("خطأ! ، يرجى المحاولة مرة أخرى لاحقًا 🤠\n/start",quote=True)
-        code_ask = await m.chat.ask("*⎆ أرسـل الكـود\n إذا جاءك في هـذه الطريقـة '12345' أرسـل بين كـل رقـم فـراغ\nمثـال : ' 1 2 3 4 5' .",filters=filters.text)
+        code_ask = await m.chat.ask("*✎┊ أرسـل الكـود\n إذا جاءك في هـذه الطريقـة '12345' أرسـل بين كـل رقـم فـراغ\nمثـال : ' 1 2 3 4 5' .",filters=filters.text)
         code = code_ask.text.replace(" ","")
         try:
           await c.sign_in(phone, code, password=None)
         except SessionPasswordNeededError:
-          password_ask = await m.chat.ask("⎆ يـرجـى إرسـال التحقق الخـاص بحسـابك ..", filters=filters.text)
+          password_ask = await m.chat.ask("✎┊ يـرجـى إرسـال التحقق الخـاص بحسـابك ..", filters=filters.text)
           password = password_ask.text
           try:
             await c.sign_in(password=password)
@@ -523,5 +520,5 @@ async def generator_and_about(app,m):
 
 app.start()
 bot.start()
-print("تم تشغيل البوت @ELHYBA")
+print("تم تشغيل البوت @I_e_e_l")
 idle()
